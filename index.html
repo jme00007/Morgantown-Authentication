@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Access Survey</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      text-align: center;
+    }
+    input {
+      font-size: 1.1em;
+      padding: 0.5em;
+      width: 200px;
+    }
+    button {
+      font-size: 1em;
+      padding: 0.5em 1em;
+      margin-top: 1em;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter Your Survey Passcode</h2>
+  <input id="passcode" type="text" placeholder="Enter passcode">
+  <br>
+  <button onclick="checkPasscode()">Submit</button>
+  <p id="status"></p>
+  <div id="surveyButton" class="hidden">
+    <a id="surveyLink" href="#" target="_blank">
+      <button>Start Survey</button>
+    </a>
+  </div>
+
+  <script>
+    async function checkPasscode() {
+      const code = document.getElementById('passcode').value.trim();
+      const status = document.getElementById('status');
+      const surveyDiv = document.getElementById('surveyButton');
+      const surveyLink = document.getElementById('surveyLink');
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxit9-GKULJzjgtYpQtrRa8dTYZb0wT4_OW1mCRk8wN4iFz4r7YhGkznMY-bfgT45V8nw/exec';  // <-- paste your Apps Script URL
+      const qualtricsURL = 'https://wvu.qualtrics.com/jfe/form/SV_77Ac6LrgbLOuFEy';  // <-- paste your Qualtrics link
+
+      status.textContent = 'Checking...';
+      surveyDiv.classList.add('hidden');
+
+      try {
+        const res = await fetch(`${scriptURL}?passcode=${encodeURIComponent(code)}`);
+        const result = await res.json();
+
+        if (result.status === 'success') {
+          status.textContent = 'Passcode verified!';
+          surveyLink.href = qualtricsURL;
+          surveyDiv.classList.remove('hidden');
+        } else {
+          status.textContent = result.message || 'Invalid passcode.';
+        }
+      } catch (error) {
+        status.textContent = 'Error connecting to server.';
+      }
+    }
+  </script>
+</body>
+</html>
