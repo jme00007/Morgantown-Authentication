@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WVU Community Survey Access</title>
+  <title>Morgantown Public Safety Survey</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,8 +16,15 @@
     header {
       background-color: #002855;
       color: #ffc600;
-      padding: 1.5em 1em;
+      padding: 1em 1em 2em;
       margin-bottom: 2em;
+    }
+
+    .logo-container img {
+      max-width: 300px;
+      width: 90%;
+      height: auto;
+      margin-bottom: 1em;
     }
 
     h1 {
@@ -28,7 +35,7 @@
     .container {
       background-color: white;
       padding: 2em;
-      max-width: 500px;
+      max-width: 550px;
       margin: 0 auto;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -79,12 +86,18 @@
 </head>
 <body>
   <header>
-    <h1>WVU Community Survey</h1>
+    <div class="logo-container">
+      <a href="https://socialwork.wvu.edu" target="_blank">
+        <img src="WVU_SSW_logo.jpg" alt="WVU School of Social Work logo" />
+      </a>
+    </div>
+    <h1>Morgantown Public Safety Survey</h1>
   </header>
 
   <div class="container">
-    <p>Welcome! Please enter your unique survey passcode below to begin the questionnaire.</p>
-    <p>This study is part of ongoing research into community safety and well-being in Morgantown.</p>
+    <p>Welcome to the Morgantown Public Safety Survey, conducted by the <strong>West Virginia University School of Social Work</strong> in collaboration with the <strong>Civilian Police Review and Advisory Board</strong>.</p>
+
+    <p>Please enter the <strong>passcode found on your mailed postcard</strong> to access the survey. Your feedback helps us understand how to improve safety and community well-being in Morgantown.</p>
 
     <input id="passcode" type="text" placeholder="Enter your passcode" />
     <br />
