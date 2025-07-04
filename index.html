@@ -1,40 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Access Survey</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WVU Community Survey Access</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 2em;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #002855;
       text-align: center;
+      padding: 2em;
     }
+
+    header {
+      background-color: #002855;
+      color: #ffc600;
+      padding: 1.5em 1em;
+      margin-bottom: 2em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    .container {
+      background-color: white;
+      padding: 2em;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
     input {
       font-size: 1.1em;
-      padding: 0.5em;
-      width: 200px;
-    }
-    button {
-      font-size: 1em;
-      padding: 0.5em 1em;
+      padding: 0.6em;
+      width: 80%;
       margin-top: 1em;
     }
+
+    button {
+      font-size: 1em;
+      padding: 0.6em 1.5em;
+      margin-top: 1em;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #003f87;
+    }
+
     .hidden {
       display: none;
+    }
+
+    #status {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    a {
+      color: #003f87;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <h2>Enter Your Survey Passcode</h2>
-  <input id="passcode" type="text" placeholder="Enter passcode">
-  <br>
-  <button onclick="checkPasscode()">Submit</button>
-  <p id="status"></p>
-  <div id="surveyButton" class="hidden">
-    <a id="surveyLink" href="#" target="_blank">
-      <button>Start Survey</button>
-    </a>
+  <header>
+    <h1>WVU Community Survey</h1>
+  </header>
+
+  <div class="container">
+    <p>Welcome! Please enter your unique survey passcode below to begin the questionnaire.</p>
+    <p>This study is part of ongoing research into community safety and well-being in Morgantown.</p>
+
+    <input id="passcode" type="text" placeholder="Enter your passcode" />
+    <br />
+    <button onclick="checkPasscode()">Submit</button>
+    <p id="status"></p>
+
+    <div id="surveyButton" class="hidden">
+      <a id="surveyLink" href="#" target="_blank">
+        <button>Start Survey</button>
+      </a>
+    </div>
   </div>
+
+  <footer>
+    <p>If you have any questions about this study, please contact Dr. Megan Gandy at <a href="mailto:megan.gandy@mail.wvu.edu">megan.gandy@mail.wvu.edu</a>.</p>
+    <p>&copy; 2025 West Virginia University</p>
+  </footer>
 
   <script>
     async function checkPasscode() {
@@ -42,8 +109,8 @@
       const status = document.getElementById('status');
       const surveyDiv = document.getElementById('surveyButton');
       const surveyLink = document.getElementById('surveyLink');
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbxit9-GKULJzjgtYpQtrRa8dTYZb0wT4_OW1mCRk8wN4iFz4r7YhGkznMY-bfgT45V8nw/exec';  // <-- paste your Apps Script URL
-      const qualtricsURL = 'https://wvu.qualtrics.com/jfe/form/SV_77Ac6LrgbLOuFEy';  // <-- paste your Qualtrics link
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxit9-GKULJzjgtYpQtrRa8dTYZb0wT4_OW1mCRk8wN4iFz4r7YhGkznMY-bfgT45V8nw/exec';
+      const qualtricsURL = 'https://wvu.qualtrics.com/jfe/form/SV_77Ac6LrgbLOuFEy';
 
       status.textContent = 'Checking...';
       surveyDiv.classList.add('hidden');
